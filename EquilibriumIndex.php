@@ -4,6 +4,7 @@
  *
  * Loops through array and determines if, for the index, the sum of the values to the left
  * is equal to sum of the values on the right, and adds the index to the output if they are.
+ * Decrements the right side sum and increments the left side as it traverses the array.
  *
  * @param $arr array An array of numbers
  * @return array equilibrium indices
@@ -46,8 +47,9 @@ function easyWay($arr)
 {
 	$output = [];
 	for ($i = 0; $i < count($arr); $i++) {
+		// compare sums of left and right sides of the index
 		if (array_sum(array_slice($arr, 0, $i)) === array_sum(array_slice($arr, $i + 1))) {
-			$returnArr[] = $i;
+			$output[] = $i;
 		}
 	}
 	return $output;
